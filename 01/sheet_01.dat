@@ -1,0 +1,56 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f slow slow-O* medium medium-O* fast fast-O*
+make
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp slow.c -o slow
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O2 slow.c -o slow-O2
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3 slow.c -o slow-O3
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp medium.c -o medium
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O2 medium.c -o medium-O2
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3 medium.c -o medium-O3
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp fast.c -o fast
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O2 fast.c -o fast-O2
+cc -std=gnu11 -Wall -Werror -Wextra -fopenmp -O3 fast.c -o fast-O3
+OMP_NUM_THREADS=1
+slow
+sum: 67108864, time: 2.3212 seconds
+slow-O2
+sum: 67108864, time: 2.0354 seconds
+slow-O3
+sum: 67108864, time: 2.0316 seconds
+medium
+sum: 67108864, time: 1.0580 seconds
+medium-O2
+sum: 67108864, time: 0.7119 seconds
+medium-O3
+sum: 67108864, time: 0.7117 seconds
+fast
+sum: 67108864, time: 0.1890 seconds
+fast-O2
+sum: 67108864, time: 0.0000 seconds
+fast-O3
+sum: 67108864, time: 0.0000 seconds
+OMP_NUM_THREADS=8
+slow
+sum: 67108864, time: 62.6489 seconds
+slow-O2
+sum: 67108864, time: 62.9386 seconds
+slow-O3
+sum: 67108864, time: 64.5058 seconds
+medium
+sum: 67108864, time: 1.9409 seconds
+medium-O2
+sum: 67108864, time: 3.7888 seconds
+medium-O3
+sum: 67108864, time: 3.7402 seconds
+fast
+sum: 67108864, time: 0.0240 seconds
+fast-O2
+sum: 67108864, time: 0.0003 seconds
+fast-O3
+sum: 67108864, time: 0.0045 seconds
+make clean
+rm -f slow slow-O* medium medium-O* fast fast-O*
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0
