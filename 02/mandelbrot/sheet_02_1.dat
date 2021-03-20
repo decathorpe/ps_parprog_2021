@@ -1,0 +1,49 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f mandelbrot mandelbrot-* mandelbrot.png
+make
+cc -std=gnu11 -Wall -Wextra -lm mandelbrot.c -o mandelbrot
+cc -std=gnu11 -Wall -Wextra -lm -O2 mandelbrot.c -o mandelbrot-O2
+cc -std=gnu11 -Wall -Wextra -lm -O3 mandelbrot.c -o mandelbrot-O3
+cc -std=gnu11 -Wall -Wextra -lm -fopenmp mandelbrot_omp.c -o mandelbrot-omp
+cc -std=gnu11 -Wall -Wextra -lm -fopenmp -O2 mandelbrot_omp.c -o mandelbrot-omp-O2
+cc -std=gnu11 -Wall -Wextra -lm -fopenmp -O3 mandelbrot_omp.c -o mandelbrot-omp-O3
+sequential
+no optimizations
+time: 19.60451 seconds
+time: 19.60061 seconds
+time: 19.60024 seconds
+time: 19.59871 seconds
+time: 19.60029 seconds
+time: 19.59916 seconds
+time: 19.59979 seconds
+time: 19.59934 seconds
+time: 19.61136 seconds
+time: 19.59978 seconds
+-O2
+time: 12.81434 seconds
+time: 12.81324 seconds
+time: 12.81428 seconds
+time: 12.81303 seconds
+time: 12.81404 seconds
+time: 12.82304 seconds
+time: 12.81465 seconds
+time: 12.81306 seconds
+time: 12.81446 seconds
+time: 12.81339 seconds
+-O3
+time: 12.81409 seconds
+time: 12.81332 seconds
+time: 12.82705 seconds
+time: 12.81326 seconds
+time: 12.81373 seconds
+time: 12.81351 seconds
+time: 12.81366 seconds
+time: 12.81373 seconds
+time: 12.81353 seconds
+time: 12.81361 seconds
+make clean
+rm -f mandelbrot mandelbrot-* mandelbrot.png
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0

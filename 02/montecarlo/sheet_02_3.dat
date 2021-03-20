@@ -1,0 +1,63 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f mcpi_seq mcpi_seq-O2 mcpi_par mcpi_par-O2
+make
+cc -std=gnu11 -Wall -Wextra -g mcpi_seq.c -o mcpi_seq
+cc -std=gnu11 -Wall -Wextra -g -O2 mcpi_seq.c -o mcpi_seq-O2
+cc -std=gnu11 -Wall -Wextra -g -lpthread mcpi_par.c -o mcpi_par
+cc -std=gnu11 -Wall -Wextra -g -lpthread -O2 mcpi_par.c -o mcpi_par-O2
+sequential
+Iterations: 100000; pi: 3.139560; time: 0.00314
+Iterations: 200000; pi: 3.141120; time: 0.00622
+Iterations: 500000; pi: 3.140216; time: 0.01560
+Iterations: 1000000; pi: 3.142316; time: 0.03103
+Iterations: 2000000; pi: 3.141892; time: 0.06208
+Iterations: 5000000; pi: 3.141838; time: 0.15520
+Iterations: 10000000; pi: 3.142123; time: 0.31026
+Iterations: 20000000; pi: 3.141615; time: 0.62019
+Iterations: 50000000; pi: 3.141603; time: 1.55029
+Iterations: 100000000; pi: 3.141535; time: 3.10071
+Iterations: 200000000; pi: 3.141593; time: 6.20106
+Iterations: 500000000; pi: 3.141578; time: 15.50324
+Iterations: 1000000000; pi: 3.141583; time: 31.00491
+Iterations: 100000; pi: 3.139560; time: 0.00220
+Iterations: 200000; pi: 3.141120; time: 0.00443
+Iterations: 500000; pi: 3.140216; time: 0.01113
+Iterations: 1000000; pi: 3.142316; time: 0.02210
+Iterations: 2000000; pi: 3.141892; time: 0.04395
+Iterations: 5000000; pi: 3.141838; time: 0.11026
+Iterations: 10000000; pi: 3.142123; time: 0.38385
+Iterations: 20000000; pi: 3.141615; time: 0.43966
+Iterations: 50000000; pi: 3.141603; time: 1.09935
+Iterations: 100000000; pi: 3.141535; time: 2.18995
+Iterations: 200000000; pi: 3.141593; time: 4.37971
+Iterations: 500000000; pi: 3.141578; time: 10.94924
+Iterations: 1000000000; pi: 3.141583; time: 21.89804
+parallel
+Iterations: 500000000; threads: 1; pi: 3.141578; time: 15.54926
+Iterations: 500000000; threads: 2; pi: 3.141599; time: 7.78325
+Threads do not divide iterations evenly.
+Iterations: 499999998; threads: 3; pi: 3.141608; time: 5.18855
+Iterations: 500000000; threads: 4; pi: 3.141540; time: 3.89335
+Iterations: 500000000; threads: 5; pi: 3.141568; time: 3.13433
+Threads do not divide iterations evenly.
+Iterations: 499999998; threads: 6; pi: 3.141546; time: 2.61028
+Threads do not divide iterations evenly.
+Iterations: 499999997; threads: 7; pi: 3.141551; time: 2.22716
+Iterations: 500000000; threads: 8; pi: 3.141627; time: 1.95637
+Iterations: 500000000; threads: 1; pi: 3.141593; time: 10.95808
+Iterations: 500000000; threads: 2; pi: 3.141634; time: 5.48412
+Threads do not divide iterations evenly.
+Iterations: 499999998; threads: 3; pi: 3.141607; time: 3.65745
+Iterations: 500000000; threads: 4; pi: 3.141617; time: 2.74321
+Iterations: 500000000; threads: 5; pi: 3.141603; time: 2.20279
+Threads do not divide iterations evenly.
+Iterations: 499999998; threads: 6; pi: 3.141656; time: 1.82950
+Threads do not divide iterations evenly.
+Iterations: 499999997; threads: 7; pi: 3.141532; time: 1.57039
+Iterations: 500000000; threads: 8; pi: 3.141574; time: 1.37391
+make clean
+rm -f mcpi_seq mcpi_seq-O2 mcpi_par mcpi_par-O2
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0
