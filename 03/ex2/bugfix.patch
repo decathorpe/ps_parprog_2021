@@ -1,0 +1,76 @@
+--- ex2.c	2021-04-11 23:07:20.942244997 +0200
++++ ex2_bugfree.c	2021-04-11 23:07:16.278263479 +0200
+@@ -64,8 +64,6 @@
+ 	INIT_ARRAY(b, error_b);
+ 	int **c = malloc(sizeof(*c) * n);
+ 	INIT_ARRAY(c, error_c);
+# changed: no longer necessary to keep track of partial results
+-    unsigned *local_res = malloc(omp_get_max_threads() * sizeof(*local_res));
+-    if (!local_res) PERROR_GOTO(error_c);
+     status = EXIT_SUCCESS;
+ 
+ 	// fill matrix
+@@ -74,39 +72,36 @@
+ 		for (long j = 0; j < n; ++j) {
+ 			a[i][j] = rand();
+ 			b[i][j] = rand();
+# initialize product matrix to prevent reading uninitialized memory with += operator
++			c[i][j] = 0;
+ 		}
+ 	}
+ 
+# track results in a single variable
++    unsigned long result = 0;
++
+ 	double start_time = omp_get_wtime();
+# drop unnecessary outer parallel scope which leads to all sorts of problems
+-#pragma omp parallel default(none) shared(n, a, b, c, local_res)
+-	{
+-		// matrix multiplication
++
++	// matrix multiplication
+ #pragma omp parallel for default(none) shared(n, a, b, c)
+-		for (long i = 0; i < n; ++i) {
+-			for (long j = 0; j < n; ++j) {
+-				for (long k = 0; k < n; ++k) {
+-					c[i][j] += a[i][k] * b[k][j];
+-				}
++	for (long i = 0; i < n; ++i) {
++		for (long j = 0; j < n; ++j) {
++			for (long k = 0; k < n; ++k) {
++				c[i][j] += a[i][k] * b[k][j];
+ 			}
+ 		}
++	}
+ 
+-		// sum of matrix c
+-#pragma omp parallel for default(none) shared(n, a, b, c, local_res)
+-		for (long i = 0; i < n; ++i) {
+-			for (long j = 0; j < n; ++j) {
+-				local_res[omp_get_thread_num()] += c[i][j];
+-			}
+# use reduction clause to gather results race-free
++	// sum of matrix c
++#pragma omp parallel for default(none) shared(n, a, b, c) reduction(+: result)
++	for (long i = 0; i < n; ++i) {
++		for (long j = 0; j < n; ++j) {
++			result += c[i][j];
+ 		}
+ 	}
+# drop unnecessary result summation
+-	unsigned long res = 0;
+-	for (int l = 0; l < omp_get_num_threads(); ++l) {
+-		res += local_res[l];
+-	}
++
+ 	double end_time = omp_get_wtime();
+# adapt variable name
+-	printf("res: %lu, time: %2.2f seconds\n", res, end_time - start_time);
++	printf("res: %lu, time: %2.2f seconds\n", result, end_time - start_time);
+ 
+ 	// cleanup
+# no need to free an array that is no longer used
+-	free(local_res);
+ error_c:
+ 	free_2d_array(c, n);
+ error_b:

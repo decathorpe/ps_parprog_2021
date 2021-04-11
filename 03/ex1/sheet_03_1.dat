@@ -1,0 +1,30 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f mcpi_atomic mcpi_critical mcpi_reduction mcpi_atomic-O2 mcpi_critical-O2 mcpi_reduction-O2
+make
+cc -std=gnu11 -Wall -Wextra -g -fopenmp mcpi_atomic.c -o mcpi_atomic
+cc -std=gnu11 -Wall -Wextra -g -fopenmp -O2 mcpi_atomic.c -o mcpi_atomic-O2
+cc -std=gnu11 -Wall -Wextra -g -fopenmp mcpi_critical.c -o mcpi_critical
+cc -std=gnu11 -Wall -Wextra -g -fopenmp -O2 mcpi_critical.c -o mcpi_critical-O2
+cc -std=gnu11 -Wall -Wextra -g -fopenmp mcpi_reduction.c -o mcpi_reduction
+cc -std=gnu11 -Wall -Wextra -g -fopenmp -O2 mcpi_reduction.c -o mcpi_reduction-O2
+critical
+Iterations: 500000000; pi: 3.141605; time: 15.59850
+Iterations: 500000000; pi: 3.141617; time: 7.80766
+Iterations: 500000000; pi: 3.141630; time: 3.90450
+Iterations: 500000000; pi: 3.141588; time: 1.95707
+atomic
+Iterations: 500000000; pi: 3.141603; time: 15.65636
+Iterations: 500000000; pi: 3.141558; time: 8.69438
+Iterations: 500000000; pi: 3.141617; time: 3.91918
+Iterations: 500000000; pi: 3.141625; time: 1.97462
+reduction
+Iterations: 500000000; pi: 3.141590; time: 15.65405
+Iterations: 500000000; pi: 3.141584; time: 7.83545
+Iterations: 500000000; pi: 3.141583; time: 3.91884
+Iterations: 500000000; pi: 3.141587; time: 1.96426
+make clean
+rm -f mcpi_atomic mcpi_critical mcpi_reduction mcpi_atomic-O2 mcpi_critical-O2 mcpi_reduction-O2
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0
