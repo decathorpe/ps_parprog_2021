@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <omp.h>
 
 // prints (int32_t *) arrays in nice formats
@@ -47,7 +46,7 @@ int is_sorted_int32_tp_array(int32_t **array, size_t length) {
 }
 
 // merge algorithm for to sorted sub-arrays
-void merge(int32_t **array, size_t length) {
+void merge(int32_t **array, size_t length, int32_t **temp) {
     size_t left_length = length / 2;
 
     // current indices in left array, right array, and sorted array
@@ -55,19 +54,16 @@ void merge(int32_t **array, size_t length) {
     size_t right = left_length;
     size_t sorted = 0;
 
-    // allocate temporary array for sorted values
-    int32_t **sorted_array = malloc(length * sizeof(int32_t *));
-
     // iterate until either the left or the right array is "empty"
     while (left < left_length && right < length) {
         if (*array[left] <= *array[right]) {
             // left element is smaller
-            sorted_array[sorted] = array[left];
+            temp[sorted] = array[left];
             left++;
             sorted++;
         } else {
             // right element is smaller
-            sorted_array[sorted] = array[right];
+            temp[sorted] = array[right];
             right++;
             sorted++;
         }
@@ -75,41 +71,38 @@ void merge(int32_t **array, size_t length) {
 
     // take remaining sorted elements from left array, if any
     while (left < left_length) {
-        sorted_array[sorted] = array[left];
+        temp[sorted] = array[left];
         left++;
         sorted++;
     }
 
     // take remaining sorted elements from right array, if any
     while (right < length) {
-        sorted_array[sorted] = array[right];
+        temp[sorted] = array[right];
         right++;
         sorted++;
     }
 
     // overwrite input array with values from temporary array
     for (size_t i = 0; i < length; i++) {
-        array[i] = sorted_array[i];
+        array[i] = temp[i];
     }
-
-    free(sorted_array);
 }
 
 // recursive merge-sort implementation
-void msort(int32_t **array, size_t length) {
+void msort_rec(int32_t **array, size_t length, int32_t **temp) {
     // if length of array is zero or one, then it's already sorted
     if (length < 2) {
         return;
     }
 
-    // small optimization for arrays of size 2 to save a lot of small, temporary allocations
-    // reduces total number of allocations by ~33% according to valgrind
+    // small optimization for arrays of size 2
     if (length == 2) {
         // swap elements if the second one is smaller
         if (*array[1] < *array[0]) {
-            int32_t *temp = array[1];
+            int32_t *tmp = array[1];
             array[0] = array[1];
-            array[1] = temp;
+            array[1] = tmp;
         }
 
         return;
@@ -124,11 +117,11 @@ void msort(int32_t **array, size_t length) {
     // - skip creating threads if the arrays are already small
     // - for <~ 2048 elements, sorting sequentially is faster (empirical)
     if (length <= 2048) {
-        msort(array, left_length);
-        msort(array+left_length, right_length);
+        msort_rec(array, left_length, temp);
+        msort_rec(array+left_length, right_length, temp + left_length);
     } else {
         // open parallel section
-        #pragma omp parallel default(none) shared(array, left_length, right_length)
+        #pragma omp parallel default(none) shared(array, left_length, right_length, temp)
         {
             // which is only executed on one thread
             #pragma omp single nowait
@@ -136,13 +129,13 @@ void msort(int32_t **array, size_t length) {
                 // but create two tasks
                 #pragma omp task
                 {
-                    msort(array, left_length);
+                    msort_rec(array, left_length, temp);
                 }
 
                 // for recursive calls
                 #pragma omp task
                 {
-                    msort(array+left_length, right_length);
+                    msort_rec(array+left_length, right_length, temp + left_length);
                 }
 
                 // and wait for both to finish
@@ -152,7 +145,17 @@ void msort(int32_t **array, size_t length) {
     }
 
     // merge sorted sub-arrays
-    merge(array, length);
+    merge(array, length, temp);
+}
+
+void msort(int32_t **array, size_t length) {
+    // allocate temporary memory once
+    // shared by merge steps in all recursive calls
+    int32_t **temp = malloc(length * sizeof(int32_t *));
+
+    msort_rec(array, length, temp);
+
+    free(temp);
 }
 
 // test unique elements
@@ -267,8 +270,6 @@ int main(void) {
 
     omp_set_max_active_levels(limit);
 
-    printf("OMP_MAX_ACTIVE_LEVELS=%d\n", omp_get_max_active_levels());
-
     int32_t *array = malloc(ARRAY_SIZE * sizeof(int32_t));
     for (size_t i = 0; i < ARRAY_SIZE; i++) {
         array[i] = rand() - (RAND_MAX / 2);
@@ -291,13 +292,14 @@ int main(void) {
 
     printf("time: %2.5f seconds\n", end_time - start_time);
 
+    int status = EXIT_SUCCESS;
     if (!is_sorted_int32_tp_array(aptr, ARRAY_SIZE)) {
-        printf("Array is not sorted!");
-        return EXIT_FAILURE;
+        printf("Array is not sorted!\n");
+        status = EXIT_FAILURE;
     }
 
     free(aptr);
     free(array);
 
-    return EXIT_SUCCESS;
+    return status;
 }

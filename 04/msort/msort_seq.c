@@ -54,21 +54,64 @@ int is_sorted_int32_tp_array(int32_t **array, size_t length) {
     return 1;
 }
 
+// merge algorithm for to sorted sub-arrays
+void merge(int32_t **array, size_t length, int32_t **temp) {
+    size_t left_length = length / 2;
+
+    // current indices in left array, right array, and sorted array
+    size_t left = 0;
+    size_t right = left_length;
+    size_t sorted = 0;
+
+    // iterate until either the left or the right array is "empty"
+    while (left < left_length && right < length) {
+        if (*array[left] <= *array[right]) {
+            // left element is smaller
+            temp[sorted] = array[left];
+            left++;
+            sorted++;
+        } else {
+            // right element is smaller
+            temp[sorted] = array[right];
+            right++;
+            sorted++;
+        }
+    }
+
+    // take remaining sorted elements from left array, if any
+    while (left < left_length) {
+        temp[sorted] = array[left];
+        left++;
+        sorted++;
+    }
+
+    // take remaining sorted elements from right array, if any
+    while (right < length) {
+        temp[sorted] = array[right];
+        right++;
+        sorted++;
+    }
+
+    // overwrite input array with values from temporary array
+    for (size_t i = 0; i < length; i++) {
+        array[i] = temp[i];
+    }
+}
+
 // recursive merge-sort implementation
-void msort(int32_t **array, size_t length) {
+void msort_rec(int32_t **array, size_t length, int32_t **temp) {
     // if length of array is zero or one, then it's already sorted
     if (length < 2) {
         return;
     }
 
-    // small optimization for arrays of size 2 to save a lot of small, temporary allocations
-    // reduces total number of allocations by ~33% according to valgrind
+    // small optimization for arrays of size 2
     if (length == 2) {
         // swap elements if the second one is smaller
         if (*array[1] < *array[0]) {
-            int32_t *temp = array[1];
+            int32_t *tmp = array[1];
             array[0] = array[1];
-            array[1] = temp;
+            array[1] = tmp;
         }
 
         return;
@@ -80,52 +123,21 @@ void msort(int32_t **array, size_t length) {
     size_t right_length = length - left_length;
 
     // sort left and right halves separately
-    msort(array, left_length);
-    msort(array+left_length, right_length);
+    msort_rec(array, left_length, temp);
+    msort_rec(array+left_length, right_length, temp + left_length);
 
-    // current indices in left array, right array, and sorted array
-    size_t left = 0;
-    size_t right = left_length;
-    size_t sorted = 0;
+    // merge sorted sub-arrays
+    merge(array, length, temp);
+}
 
-    // allocate temporary array for sorted values
-    int32_t **sorted_array = malloc(length * sizeof(int32_t *));
+void msort(int32_t **array, size_t length) {
+    // allocate temporary memory once
+    // shared by merge steps in all recursive calls
+    int32_t **temp = malloc(length * sizeof(int32_t *));
 
-    // iterate until either the left or the right array is "empty"
-    while (left < left_length && right < length) {
-        if (*array[left] <= *array[right]) {
-            // left element is smaller
-            sorted_array[sorted] = array[left];
-            left++;
-            sorted++;
-        } else {
-            // right element is smaller
-            sorted_array[sorted] = array[right];
-            right++;
-            sorted++;
-        }
-    }
+    msort_rec(array, length, temp);
 
-    // take remaining sorted elements from left array, if any
-    while (left < left_length) {
-        sorted_array[sorted] = array[left];
-        left++;
-        sorted++;
-    }
-
-    // take remaining sorted elements from right array, if any
-    while (right < length) {
-        sorted_array[sorted] = array[right];
-        right++;
-        sorted++;
-    }
-
-    // overwrite input array with values from temporary array
-    for (size_t i = 0; i < length; i++) {
-        array[i] = sorted_array[i];
-    }
-
-    free(sorted_array);
+    free(temp);
 }
 
 // test unique elements
@@ -244,13 +256,14 @@ int main(void) {
 
     printf("time: %2.5f seconds\n", end_time - start_time);
 
+    int status = EXIT_SUCCESS;
     if (!is_sorted_int32_tp_array(aptr, ARRAY_SIZE)) {
         printf("Array is not sorted!\n");
-        return EXIT_FAILURE;
+        status = EXIT_FAILURE;
     }
 
     free(aptr);
     free(array);
 
-    return EXIT_SUCCESS;
+    return status;
 }
