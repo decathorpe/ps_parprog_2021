@@ -1,0 +1,24 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f msort_seq msort_par
+make
+cc -std=gnu11 -Wall -Wextra -O2 msort_seq.c -o msort_seq
+cc -std=gnu11 -Wall -Wextra -O2 -fopenmp msort_par.c -o msort_par
+Recursive Sequential
+time: 39.94144 seconds
+time: 39.96415 seconds
+time: 40.01096 seconds
+time: 39.94729 seconds
+OMP_NUM_THREADS=1
+time: 40.08679 seconds
+OMP_NUM_THREADS=2
+time: 25.48438 seconds
+OMP_NUM_THREADS=4
+time: 19.39156 seconds
+OMP_NUM_THREADS=8
+time: 16.82608 seconds
+make clean
+rm -f msort_seq msort_par
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0

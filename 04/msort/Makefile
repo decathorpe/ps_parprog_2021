@@ -1,4 +1,4 @@
-CFLAGS=-std=gnu11 -Wall -Wextra -O2 -g
+CFLAGS=-std=gnu11 -Wall -Wextra -O2
 
 all: msort_seq msort_par
 
