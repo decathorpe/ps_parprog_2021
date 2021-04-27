@@ -19,6 +19,10 @@
 
 #define IND(y, x) ((y) * (N) + (x))
 
+int clamp(int x, int min, int max) {
+    return (x < min) ? min : ((x >= max) ? max - 1 : x);
+}
+
 void printTemperature(double *m, int N, int M);
 
 // -- simulation code ---
@@ -40,6 +44,7 @@ int main(int argc, char **argv) {
     if(!A) PERROR_GOTO(error_a);
 
     // set up initial conditions in A
+    #pragma omp parallel for
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             A[IND(i,j)] = 273; // temperature is 0° C everywhere (273 K)
@@ -51,7 +56,7 @@ int main(int argc, char **argv) {
     int source_y = N / 4;
     A[IND(source_x,source_y)] = 273 + 60;
 
-    printf("Initial:");
+    printf("Initial:\n");
     printTemperature(A, N, N);
     printf("\n");
 
@@ -62,8 +67,34 @@ int main(int argc, char **argv) {
     if(!B) PERROR_GOTO(error_b);
     // for each time step ..
     for (int t = 0; t < T; t++) {
-        // todo implement heat propagation
-        // todo make sure the heat source stays the same
+
+        #pragma omp parallel for collapse(2)
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+                double center = A[IND(x,y)];
+                double left = center;
+                double right = center;
+                double top = center;
+                double bottom = center;
+
+                if (x > 0) { right = A[IND(x-1, y)]; }
+                if (x < N-1) { left = A[IND(x+1, y)]; }
+                
+                if (y > 0) { top = A[IND(x, y-1)]; }
+                if (y < N-1) { bottom = A[IND(x, y+1)]; }
+
+                double dT = 0.25 * (right + left + top + bottom - 4 * center);
+                B[IND(x,y)] = center + dT;
+            }
+        }
+
+        // set heat source temperature again
+        B[IND(source_x,source_y)] = 273 + 60;
+
+        // swap A and B buffers
+        double *C = A;
+        A = B;
+        B = C;
 
         // every 1000 steps show intermediate step
         if (!(t % 1000)) {
@@ -73,10 +104,9 @@ int main(int argc, char **argv) {
         }
     }
 
-
     // ---------- check ----------
 
-    printf("Final:");
+    printf("Final:\n");
     printTemperature(A, N, N);
     printf("\n");
 

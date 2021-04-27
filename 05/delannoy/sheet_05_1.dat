@@ -1,0 +1,20 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f delannoy_seq delannoy_par_imp delannoy_par_rec
+make
+cc -std=gnu11 -Wall -Wextra -O2 delannoy_seq.c -o delannoy_seq
+cc -std=gnu11 -Wall -Wextra -O2 -fopenmp delannoy_par_imp.c -o delannoy_par_imp
+cc -std=gnu11 -Wall -Wextra -O2 -fopenmp delannoy_par_rec.c -o delannoy_par_rec
+delannoy_par_rec.c: In function ‘delannoy_rec’:
+delannoy_par_rec.c:14:0: warning: ignoring #pragma omp taskgroup [-Wunknown-pragmas]
+     #pragma omp taskgroup
+ ^
+Sequential
+result: 251595969, time: 0.000004530 seconds
+result: 251595969, time: 0.000004292 seconds
+result: 251595969, time: 0.000003815 seconds
+result: 251595969, time: 0.000003576 seconds
+OMP_NUM_THREADS=1
+result: 18255922, time: 12.479162332 seconds
+OMP_NUM_THREADS=8
