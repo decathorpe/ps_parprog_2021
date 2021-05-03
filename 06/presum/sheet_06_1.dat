@@ -1,0 +1,33 @@
+module load gcc/8.2.0
+  Loading gcc/8.2.0
+make clean
+rm -f presum_seq presum_par
+make
+cc -std=gnu11 -Wall -Wextra -O3 presum_seq.c -o presum_seq
+cc -std=gnu11 -Wall -Wextra -O3 -fopenmp presum_par.c -o presum_par
+Sequential
+result: 999999999, time: 8.194122076 seconds
+result: 999999999, time: 8.189934254 seconds
+result: 999999999, time: 8.181318283 seconds
+result: 999999999, time: 8.219448328 seconds
+result: 999999999, time: 8.190007925 seconds
+OMP_NUM_THREADS=1
+result: 999999999, time: 8.215678237 seconds
+OMP_NUM_THREADS=2
+result: 999999999, time: 5.203491576 seconds
+OMP_NUM_THREADS=3
+result: 999999999, time: 3.726963229 seconds
+OMP_NUM_THREADS=4
+result: 999999999, time: 3.261528399 seconds
+OMP_NUM_THREADS=5
+result: 999999999, time: 3.033638578 seconds
+OMP_NUM_THREADS=6
+result: 999999999, time: 2.746852156 seconds
+OMP_NUM_THREADS=7
+result: 999999999, time: 2.718711659 seconds
+OMP_NUM_THREADS=8
+result: 999999999, time: 2.607410312 seconds
+make clean
+rm -f presum_seq presum_par
+module unload gcc/8.2.0
+  Unloading gcc/8.2.0
