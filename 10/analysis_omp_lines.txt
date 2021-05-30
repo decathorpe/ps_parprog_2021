@@ -1,0 +1,317 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+ 12.95      0.69     0.69                             resid._omp_fn.0 (real_omp.c:544 @ 405861)
+ 10.97      1.27     0.58                             resid._omp_fn.0 (real_omp.c:540 @ 4056da)
+  6.05      1.59     0.32                             psinv._omp_fn.0 (real_omp.c:475 @ 404ed8)
+  5.58      1.88     0.30                             resid._omp_fn.0 (real_omp.c:543 @ 4058b5)
+  5.20      2.16     0.28                             resid._omp_fn.0 (real_omp.c:542 @ 4058b9)
+  3.78      2.36     0.20                             rprj3._omp_fn.0 (real_omp.c:628 @ 403580)
+  3.21      2.53     0.17                             interp._omp_fn.0 (real_omp.c:708 @ 4044e6)
+  2.27      2.65     0.12                             interp._omp_fn.0 (real_omp.c:720 @ 4046dc)
+  1.99      2.75     0.11                             psinv._omp_fn.0 (real_omp.c:469 @ 404d43)
+  1.89      2.85     0.10                             resid._omp_fn.0 (real_omp.c:537 @ 4056b0)
+  1.89      2.95     0.10                             vranlc (randdp.c:129 @ 402224)
+  1.80      3.05     0.10                             psinv._omp_fn.0 (real_omp.c:471 @ 404d39)
+  1.70      3.14     0.09                             vranlc (randdp.c:133 @ 402260)
+  1.51      3.22     0.08                             interp._omp_fn.0 (real_omp.c:714 @ 4045e6)
+  1.51      3.30     0.08                             resid._omp_fn.0 (real_omp.c:539 @ 4056f9)
+  1.51      3.38     0.08                             resid._omp_fn.0 (real_omp.c:551 @ 405873)
+  1.51      3.46     0.08                             rprj3._omp_fn.0 (real_omp.c:625 @ 403500)
+  1.42      3.53     0.08                             vranlc (randdp.c:136 @ 402284)
+  1.32      3.60     0.07                             vranlc (randdp.c:135 @ 402270)
+  1.23      3.67     0.07                             resid._omp_fn.0 (real_omp.c:552 @ 4058a9)
+  1.13      3.73     0.06                             interp._omp_fn.0 (real_omp.c:698 @ 404297)
+  1.13      3.79     0.06                             psinv._omp_fn.0 (real_omp.c:470 @ 404d33)
+  1.13      3.85     0.06                             psinv._omp_fn.0 (real_omp.c:471 @ 404d58)
+  1.04      3.90     0.06                             vranlc (randdp.c:130 @ 40222c)
+  1.04      3.96     0.06                             vranlc (randdp.c:132 @ 40224c)
+  0.95      4.01     0.05                             interp._omp_fn.0 (real_omp.c:702 @ 4043e5)
+  0.95      4.06     0.05                             resid._omp_fn.0 (real_omp.c:551 @ 4058a5)
+  0.85      4.10     0.05                             resid._omp_fn.0 (real_omp.c:544 @ 4058a1)
+  0.85      4.15     0.05                             vranlc (randdp.c:137 @ 402291)
+  0.76      4.19     0.04                             psinv._omp_fn.0 (real_omp.c:474 @ 404f02)
+  0.76      4.23     0.04                             resid._omp_fn.0 (real_omp.c:538 @ 4056df)
+  0.76      4.27     0.04                             resid._omp_fn.0 (real_omp.c:536 @ 4056fe)
+  0.76      4.31     0.04                             rprj3._omp_fn.0 (real_omp.c:641 @ 403b15)
+  0.66      4.34     0.04                             resid._omp_fn.0 (real_omp.c:540 @ 4056f1)
+  0.66      4.38     0.04                             resid._omp_fn.0 (real_omp.c:540 @ 4056d1)
+  0.57      4.41     0.03                             psinv._omp_fn.0 (real_omp.c:478 @ 404ec7)
+  0.47      4.43     0.03                             psinv._omp_fn.0 (real_omp.c:470 @ 404d4f)
+  0.47      4.46     0.03                             psinv._omp_fn.0 (real_omp.c:473 @ 404f06)
+  0.47      4.48     0.03                             resid._omp_fn.0 (real_omp.c:539 @ 4056e8)
+  0.47      4.51     0.03                             vranlc (randdp.c:128 @ 40221c)
+  0.47      4.53     0.03                             vranlc (randdp.c:134 @ 402268)
+  0.38      4.55     0.02                             interp._omp_fn.0 (real_omp.c:704 @ 404410)
+  0.38      4.57     0.02                             interp._omp_fn.0 (real_omp.c:716 @ 40461f)
+  0.38      4.59     0.02                             interp._omp_fn.0 (real_omp.c:722 @ 404711)
+  0.38      4.61     0.02                             norm2u3 (real_omp.c:856 @ 405d8c)
+  0.38      4.63     0.02                             psinv._omp_fn.0 (real_omp.c:470 @ 404d60)
+  0.38      4.65     0.02                             resid._omp_fn.0 (real_omp.c:536 @ 4055d5)
+  0.38      4.67     0.02                             resid._omp_fn.0 (real_omp.c:538 @ 4056bb)
+  0.38      4.69     0.02                             resid._omp_fn.0 (real_omp.c:544 @ 40587e)
+  0.38      4.71     0.02                             resid._omp_fn.0 (real_omp.c:552 @ 405887)
+  0.38      4.73     0.02                             resid._omp_fn.0 (real_omp.c:551 @ 405899)
+  0.38      4.75     0.02                             rprj3._omp_fn.0 (real_omp.c:626 @ 40353e)
+  0.38      4.77     0.02                             rprj3._omp_fn.0 (real_omp.c:625 @ 40355e)
+  0.38      4.79     0.02                             rprj3._omp_fn.0 (real_omp.c:639 @ 403aa1)
+  0.38      4.81     0.02                             vranlc (randdp.c:131 @ 40223c)
+  0.28      4.83     0.02                             norm2u3 (real_omp.c:855 @ 405d90)
+  0.28      4.84     0.02                             psinv._omp_fn.0 (real_omp.c:469 @ 404d23)
+  0.28      4.86     0.02                             psinv._omp_fn.0 (real_omp.c:468 @ 404d2f)
+  0.28      4.87     0.02                             psinv._omp_fn.0 (real_omp.c:478 @ 404efe)
+  0.28      4.89     0.02                             resid._omp_fn.0 (real_omp.c:539 @ 4056cc)
+  0.28      4.90     0.02                             resid._omp_fn.0 (real_omp.c:551 @ 405858)
+  0.28      4.92     0.02                             vranlc (randdp.c:134 @ 402244)
+  0.28      4.93     0.02                             interp._omp_fn.0 (real_omp.c:711 @ 404509)
+  0.28      4.95     0.02                             interp._omp_fn.0 (real_omp.c:710 @ 40451f)
+  0.28      4.96     0.02                             psinv._omp_fn.0 (real_omp.c:468 @ 404d4b)
+  0.28      4.98     0.02                             psinv._omp_fn.0 (real_omp.c:476 @ 404eee)
+  0.28      4.99     0.02                             zran3 (real_omp.c:1000 @ 406acd)
+  0.19      5.00     0.01                             interp._omp_fn.0 (real_omp.c:696 @ 404268)
+  0.19      5.01     0.01                             interp._omp_fn.0 (real_omp.c:715 @ 4045e0)
+  0.19      5.02     0.01                             interp._omp_fn.0 (real_omp.c:715 @ 4045fc)
+  0.19      5.03     0.01                             interp._omp_fn.0 (real_omp.c:723 @ 4046ff)
+  0.19      5.04     0.01                             psinv._omp_fn.0 (real_omp.c:467 @ 404c1f)
+  0.19      5.05     0.01                             psinv._omp_fn.0 (real_omp.c:468 @ 404d18)
+  0.19      5.06     0.01                             psinv._omp_fn.0 (real_omp.c:467 @ 404d65)
+  0.19      5.07     0.01                             psinv._omp_fn.0 (real_omp.c:477 @ 404ec0)
+  0.19      5.08     0.01                             psinv._omp_fn.0 (real_omp.c:475 @ 404ee5)
+  0.19      5.09     0.01                             psinv._omp_fn.0 (real_omp.c:466 @ 404faf)
+  0.19      5.10     0.01                             resid._omp_fn.0 (real_omp.c:537 @ 4056c8)
+  0.19      5.11     0.01                             resid._omp_fn.0 (real_omp.c:538 @ 4056d6)
+  0.19      5.12     0.01                             resid._omp_fn.0 (real_omp.c:537 @ 4056e3)
+  0.19      5.13     0.01                             resid._omp_fn.0 (real_omp.c:542 @ 4057ae)
+  0.19      5.14     0.01                             resid._omp_fn.0 (real_omp.c:535 @ 40596c)
+  0.19      5.15     0.01                             rprj3._omp_fn.0 (real_omp.c:627 @ 4035a0)
+  0.19      5.16     0.01                             rprj3._omp_fn.0 (real_omp.c:623 @ 4035aa)
+  0.19      5.17     0.01                             rprj3._omp_fn.0 (real_omp.c:640 @ 4039f5)
+  0.19      5.18     0.01                             rprj3._omp_fn.0 (real_omp.c:633 @ 403a7c)
+  0.19      5.19     0.01                             rprj3._omp_fn.0 (real_omp.c:640 @ 403b03)
+  0.19      5.20     0.01                             rprj3._omp_fn.0 (real_omp.c:641 @ 403b07)
+  0.19      5.21     0.01                             rprj3._omp_fn.0 (real_omp.c:640 @ 403b10)
+  0.19      5.22     0.01                             vranlc (randdp.c:131 @ 402234)
+  0.09      5.23     0.01                             interp._omp_fn.0 (real_omp.c:702 @ 404440)
+  0.09      5.23     0.01                             interp._omp_fn.0 (real_omp.c:703 @ 404443)
+  0.09      5.24     0.01                             interp._omp_fn.0 (real_omp.c:715 @ 404671)
+  0.09      5.24     0.01                             interp._omp_fn.0 (real_omp.c:714 @ 404676)
+  0.09      5.25     0.01                             norm2u3 (real_omp.c:857 @ 405d80)
+  0.09      5.25     0.01                             psinv._omp_fn.0 (real_omp.c:478 @ 404ef2)
+  0.09      5.26     0.01                             resid._omp_fn.0 (real_omp.c:551 @ 40588b)
+  0.09      5.26     0.01                             resid._omp_fn.0 (real_omp.c:544 @ 405894)
+  0.09      5.27     0.01                             rprj3._omp_fn.0 (real_omp.c:637 @ 403b19)
+  0.09      5.27     0.01                             rprj3._omp_fn.0 (real_omp.c:631 @ 403b1e)
+  0.09      5.28     0.01                             vranlc (randdp.c:128 @ 402210)
+  0.09      5.28     0.01                             vranlc (randdp.c:129 @ 402214)
+  0.09      5.29     0.01                             vranlc (randdp.c:130 @ 402238)
+  0.09      5.29     0.01                             zran3 (real_omp.c:1007 @ 406ade)
+  0.00      5.29     0.00   131642     0.00     0.00  randlc (randdp.c:5 @ 4020e0)
+  0.00      5.29     0.00   131072     0.00     0.00  vranlc (randdp.c:72 @ 4021b0)
+  0.00      5.29     0.00      487     0.00     0.00  comm3.constprop.0 (real_omp.c:889 @ 405ee0)
+  0.00      5.29     0.00      147     0.00     0.00  interp (real_omp.c:672 @ 408c10)
+  0.00      5.29     0.00      147     0.00     0.00  psinv (real_omp.c:449 @ 4085f0)
+  0.00      5.29     0.00      147     0.00     0.00  resid (real_omp.c:518 @ 4088e0)
+  0.00      5.29     0.00        6     0.00     0.00  power.constprop.0 (real_omp.c:1153 @ 405e60)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.19% of 5.29 seconds
+
+index % time    self  children    called     name
+                0.00    0.00       2/131642      zran3 (real_omp.c:955 @ 40652f) [2288]
+                0.00    0.00       4/131642      power (real_omp.c:1165 @ 405ea4) [1314]
+                0.00    0.00      52/131642      power (real_omp.c:1166 @ 405e90) [1311]
+                0.00    0.00     512/131642      zran3 (real_omp.c:965 @ 40657a) [2297]
+                0.00    0.00  131072/131642      zran3 (real_omp.c:976 @ 40662d) [2308]
+[105]    0.0    0.00    0.00  131642         randlc (randdp.c:5 @ 4020e0) [105]
+-----------------------------------------------
+                0.00    0.00  131072/131072      zran3 (real_omp.c:973 @ 40661f) [2306]
+[106]    0.0    0.00    0.00  131072         vranlc (randdp.c:72 @ 4021b0) [106]
+-----------------------------------------------
+                0.00    0.00       2/487         zran3 (real_omp.c:1116 @ 4085af) [2409]
+                0.00    0.00     147/487         rprj3 (real_omp.c:648 @ 40ad9d) [1623]
+                0.00    0.00     168/487         psinv (real_omp.c:492 @ 4086b5) [1348]
+                0.00    0.00     170/487         resid (real_omp.c:561 @ 4089ca) [1498]
+[107]    0.0    0.00    0.00     487         comm3.constprop.0 (real_omp.c:889 @ 405ee0) [107]
+-----------------------------------------------
+                0.00    0.00      21/147         mg3P (real_omp.c:430 @ 40b352) [1252]
+                0.00    0.00     126/147         mg3P (real_omp.c:415 @ 40b254) [1244]
+[108]    0.0    0.00    0.00     147         interp (real_omp.c:672 @ 408c10) [108]
+-----------------------------------------------
+                0.00    0.00      21/147         mg3P (real_omp.c:406 @ 40b14c) [1239]
+                0.00    0.00     126/147         mg3P (real_omp.c:408 @ 40b330) [1249]
+[109]    0.0    0.00    0.00     147         psinv (real_omp.c:449 @ 4085f0) [109]
+-----------------------------------------------
+                0.00    0.00      21/147         mg3P (real_omp.c:431 @ 40b397) [1253]
+                0.00    0.00     126/147         mg3P (real_omp.c:420 @ 40b2a4) [1245]
+[110]    0.0    0.00    0.00     147         resid (real_omp.c:518 @ 4088e0) [110]
+-----------------------------------------------
+                0.00    0.00       2/6           zran3 (real_omp.c:945 @ 40641f) [2267]
+                0.00    0.00       2/6           zran3 (real_omp.c:945 @ 40642a) [2269]
+                0.00    0.00       2/6           zran3 (real_omp.c:950 @ 4064ee) [2278]
+[111]    0.0    0.00    0.00       6         power.constprop.0 (real_omp.c:1153 @ 405e60) [111]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+ [107] comm3.constprop.0 (real_omp.c:889 @ 405ee0) [75] psinv._omp_fn.0 (real_omp.c:477 @ 404ec0) [20] resid._omp_fn.0 (real_omp.c:552 @ 4058a9)
+ [108] interp (real_omp.c:672 @ 408c10) [36] psinv._omp_fn.0 (real_omp.c:478 @ 404ec7) [4] resid._omp_fn.0 (real_omp.c:543 @ 4058b5)
+  [68] interp._omp_fn.0 (real_omp.c:696 @ 404268) [3] psinv._omp_fn.0 (real_omp.c:475 @ 404ed8) [5] resid._omp_fn.0 (real_omp.c:542 @ 4058b9)
+  [21] interp._omp_fn.0 (real_omp.c:698 @ 404297) [76] psinv._omp_fn.0 (real_omp.c:475 @ 404ee5) [82] resid._omp_fn.0 (real_omp.c:535 @ 40596c)
+  [26] interp._omp_fn.0 (real_omp.c:702 @ 4043e5) [66] psinv._omp_fn.0 (real_omp.c:476 @ 404eee) [17] rprj3._omp_fn.0 (real_omp.c:625 @ 403500)
+  [42] interp._omp_fn.0 (real_omp.c:704 @ 404410) [96] psinv._omp_fn.0 (real_omp.c:478 @ 404ef2) [52] rprj3._omp_fn.0 (real_omp.c:626 @ 40353e)
+  [91] interp._omp_fn.0 (real_omp.c:702 @ 404440) [59] psinv._omp_fn.0 (real_omp.c:478 @ 404efe) [53] rprj3._omp_fn.0 (real_omp.c:625 @ 40355e)
+  [92] interp._omp_fn.0 (real_omp.c:703 @ 404443) [30] psinv._omp_fn.0 (real_omp.c:474 @ 404f02) [6] rprj3._omp_fn.0 (real_omp.c:628 @ 403580)
+   [7] interp._omp_fn.0 (real_omp.c:708 @ 4044e6) [38] psinv._omp_fn.0 (real_omp.c:473 @ 404f06) [83] rprj3._omp_fn.0 (real_omp.c:627 @ 4035a0)
+  [63] interp._omp_fn.0 (real_omp.c:711 @ 404509) [77] psinv._omp_fn.0 (real_omp.c:466 @ 404faf) [84] rprj3._omp_fn.0 (real_omp.c:623 @ 4035aa)
+  [64] interp._omp_fn.0 (real_omp.c:710 @ 40451f) [105] randlc (randdp.c:5 @ 4020e0) [85] rprj3._omp_fn.0 (real_omp.c:640 @ 4039f5)
+  [69] interp._omp_fn.0 (real_omp.c:715 @ 4045e0) [110] resid (real_omp.c:518 @ 4088e0) [86] rprj3._omp_fn.0 (real_omp.c:633 @ 403a7c)
+  [14] interp._omp_fn.0 (real_omp.c:714 @ 4045e6) [47] resid._omp_fn.0 (real_omp.c:536 @ 4055d5) [54] rprj3._omp_fn.0 (real_omp.c:639 @ 403aa1)
+  [70] interp._omp_fn.0 (real_omp.c:715 @ 4045fc) [10] resid._omp_fn.0 (real_omp.c:537 @ 4056b0) [87] rprj3._omp_fn.0 (real_omp.c:640 @ 403b03)
+  [43] interp._omp_fn.0 (real_omp.c:716 @ 40461f) [48] resid._omp_fn.0 (real_omp.c:538 @ 4056bb) [88] rprj3._omp_fn.0 (real_omp.c:641 @ 403b07)
+  [93] interp._omp_fn.0 (real_omp.c:715 @ 404671) [78] resid._omp_fn.0 (real_omp.c:537 @ 4056c8) [89] rprj3._omp_fn.0 (real_omp.c:640 @ 403b10)
+  [94] interp._omp_fn.0 (real_omp.c:714 @ 404676) [60] resid._omp_fn.0 (real_omp.c:539 @ 4056cc) [33] rprj3._omp_fn.0 (real_omp.c:641 @ 403b15)
+   [8] interp._omp_fn.0 (real_omp.c:720 @ 4046dc) [35] resid._omp_fn.0 (real_omp.c:540 @ 4056d1) [99] rprj3._omp_fn.0 (real_omp.c:637 @ 403b19)
+  [71] interp._omp_fn.0 (real_omp.c:723 @ 4046ff) [79] resid._omp_fn.0 (real_omp.c:538 @ 4056d6) [100] rprj3._omp_fn.0 (real_omp.c:631 @ 403b1e)
+  [44] interp._omp_fn.0 (real_omp.c:722 @ 404711) [2] resid._omp_fn.0 (real_omp.c:540 @ 4056da) [106] vranlc (randdp.c:72 @ 4021b0)
+  [95] norm2u3 (real_omp.c:857 @ 405d80) [31] resid._omp_fn.0 (real_omp.c:538 @ 4056df) [101] vranlc (randdp.c:128 @ 402210)
+  [45] norm2u3 (real_omp.c:856 @ 405d8c) [80] resid._omp_fn.0 (real_omp.c:537 @ 4056e3) [102] vranlc (randdp.c:129 @ 402214)
+  [56] norm2u3 (real_omp.c:855 @ 405d90) [39] resid._omp_fn.0 (real_omp.c:539 @ 4056e8) [40] vranlc (randdp.c:128 @ 40221c)
+ [111] power.constprop.0 (real_omp.c:1153 @ 405e60) [34] resid._omp_fn.0 (real_omp.c:540 @ 4056f1) [11] vranlc (randdp.c:129 @ 402224)
+ [109] psinv (real_omp.c:449 @ 4085f0) [15] resid._omp_fn.0 (real_omp.c:539 @ 4056f9) [24] vranlc (randdp.c:130 @ 40222c)
+  [72] psinv._omp_fn.0 (real_omp.c:467 @ 404c1f) [32] resid._omp_fn.0 (real_omp.c:536 @ 4056fe) [90] vranlc (randdp.c:131 @ 402234)
+  [73] psinv._omp_fn.0 (real_omp.c:468 @ 404d18) [81] resid._omp_fn.0 (real_omp.c:542 @ 4057ae) [103] vranlc (randdp.c:130 @ 402238)
+  [57] psinv._omp_fn.0 (real_omp.c:469 @ 404d23) [61] resid._omp_fn.0 (real_omp.c:551 @ 405858) [55] vranlc (randdp.c:131 @ 40223c)
+  [58] psinv._omp_fn.0 (real_omp.c:468 @ 404d2f) [1] resid._omp_fn.0 (real_omp.c:544 @ 405861) [62] vranlc (randdp.c:134 @ 402244)
+  [22] psinv._omp_fn.0 (real_omp.c:470 @ 404d33) [16] resid._omp_fn.0 (real_omp.c:551 @ 405873) [25] vranlc (randdp.c:132 @ 40224c)
+  [12] psinv._omp_fn.0 (real_omp.c:471 @ 404d39) [49] resid._omp_fn.0 (real_omp.c:544 @ 40587e) [13] vranlc (randdp.c:133 @ 402260)
+   [9] psinv._omp_fn.0 (real_omp.c:469 @ 404d43) [50] resid._omp_fn.0 (real_omp.c:552 @ 405887) [41] vranlc (randdp.c:134 @ 402268)
+  [65] psinv._omp_fn.0 (real_omp.c:468 @ 404d4b) [97] resid._omp_fn.0 (real_omp.c:551 @ 40588b) [19] vranlc (randdp.c:135 @ 402270)
+  [37] psinv._omp_fn.0 (real_omp.c:470 @ 404d4f) [98] resid._omp_fn.0 (real_omp.c:544 @ 405894) [18] vranlc (randdp.c:136 @ 402284)
+  [23] psinv._omp_fn.0 (real_omp.c:471 @ 404d58) [51] resid._omp_fn.0 (real_omp.c:551 @ 405899) [29] vranlc (randdp.c:137 @ 402291)
+  [46] psinv._omp_fn.0 (real_omp.c:470 @ 404d60) [28] resid._omp_fn.0 (real_omp.c:544 @ 4058a1) [67] zran3 (real_omp.c:1000 @ 406acd)
+  [74] psinv._omp_fn.0 (real_omp.c:467 @ 404d65) [27] resid._omp_fn.0 (real_omp.c:551 @ 4058a5) [104] zran3 (real_omp.c:1007 @ 406ade)
